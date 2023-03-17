@@ -11,11 +11,11 @@ Node hale = null;
     }
     public void settInn(T E){
         if (hode == null){
-            hode = new node(E);
+            hode = new Node(E);
             hale = hode;
             return;
         }
-        Node ny = new node(E);
+        Node ny = new Node(E);
         Node gammel = hale;
         hale = ny;
         gammel.neste = ny;

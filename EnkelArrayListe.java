@@ -1,38 +1,40 @@
 import java.util.Iterator;
 
-class EnkelArrayListe<String> implements Iterable<String>{
+class EnkelArrayListe implements Iterable<String>{
     int teller = 0;
     int storelse;
-    String[] liste;
+    Object liste[];
 public EnkelArrayListe(int storelse){
     this.storelse = storelse;
-    liste = new String[storelse];
+    liste= new Object[storelse];
 
 }
-public boolian settInn(String noe){
+public boolean settInn(String noe){
     if (teller != storelse){
         liste[teller] = noe;
-
+        teller++;
+        return true;
     }
+    else return false;
 }
 class listeiterator implements Iterator<String>{
-
+    int pos = 0;
     @Override
     public boolean hasNext() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'hasNext'");
+        return liste[pos+1] != null;
+
     }
 
     @Override
     public String next() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'next'");
+        pos++;
+        Object en = (liste[pos-1]);
+        return en.toString();
     }
 
 }
 @Override
 public Iterator<String> iterator() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'iterator'");
+    return new listeiterator();
 }
 }
